@@ -1,0 +1,28 @@
+{% extends 'front.html.twig' %}
+
+{% block body %}
+
+   
+        <div class="row" style="margin-top: 20px; ">
+             {% for produit in produits %}
+                <div class="col-3" style="margin-bottom: 20px;">
+                    <div class="card" style="width: 18rem;">
+                   
+                        <img src="{{ asset('uploads/images/product/' ~ produit.images[0].name)|imagine_filter('square') }}" class="card-img-top" alt="{{produit.designation}}">
+                       
+                    
+                        <div class="card-body">
+                            <h5 class="card-title">{{produit.designation}}</h5>
+                            <p class="card-text" style="color:red;">{{produit.remise}}%</p>
+                            <p class="card-text">{{produit.prix}} DT</p>
+                            <a href="{{ path('produit_detail', {'id': produit.id})}}" class="btn btn-primary">Détail</a>
+                            <a href="{{ path('ajout_panier', {'id': produit.id})}}" class="btn btn-primary pull-right" >Panier </a>
+                        </div>
+                    </div>
+                </div>
+             {% endfor %}
+        </div>
+    
+    
+
+{% endblock %}

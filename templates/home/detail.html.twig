@@ -1,0 +1,24 @@
+{% extends "front.html.twig" %}
+
+
+{% block body %}
+
+
+	<h1>Product detail</h1>
+    <div class="row">
+        <div class="gallery">
+            {% set i = 1 %}
+            {% for image in produit.images %}
+                <img src="{{ asset('uploads/images/product/'~ image.name) }}" alt="{{produit.designation}}" class="gallery__photo gallery__photo--p{{i}}">
+                {% set i = i+1 %}
+            {% endfor %}
+            
+        </div>
+	</div>
+
+    <div class="row" style="margin-top: 600px;">
+        <h3>{{ produit.designation }},   {{ produit.prix }}DT </h3><span style="color: red; font-size: large;"> {{ produit.remise }}%</span>
+        <p>{{ produit.description }}</p>
+    </div>
+
+{% endblock %}
